@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacked By Team XTREME - DON'T TRY TO FIND US.</title>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="Team XTREME"/>
+    <meta name="description" content="🇵🇸🇵🇸STAND FOR PALESTINE 🇵🇸🇵🇸"/>
+    <meta property="og:title" content="Hacked By Team XTREME - DON'T TRY TO FIND US."/>
+    <meta name="keywords" content="Team XTREME - DON'T TRY TO FIND US.,Hacked By Team XTREME,hacked by Team XTREME,haxor uploader, haxor script deface generator, nathan prinsley, mr.prins, prinsh, hacked by, haxor my id"/>
+    <meta property="og:image" content="https://cdn.prinsh.com/data-1/images/NathanPrinsley-anonymous-face.png"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Haxor Uploader"/>
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.prinsh.com/data-1/images/NathanPrinsley-anonymous-face.png" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.prinsh.com/NathanPrinsley-textstyle/nprinsh-stext.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    .player{
+        opacity: 70%;
+    }
+    .music-player {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.2); /* Reduced opacity */
+      padding: 10px; /* Smaller padding */
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      width: 70%; /* Reduced width */
+      height: 30px; /* Reduced height */
+      margin: 20% 0 0 0;
+    }  
+   
+    #cautionMessage, #btn2 {
+      display: none; /* Hidden by default */
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      margin: 0 5% 0 5%;
+    }
+
+
+    #playPauseButton, #soundButton {
+      margin: 5px;
+      padding: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      position: relative;
+      z-index: 1; /* Ensure the buttons are on top */
+      color: white; /* White color for buttons */
+    }
+
+    #progressBar {
+      width: 80%;
+      z-index: 1; /* Ensure the progress bar is on top */
+    }
+
+    #timer {
+      margin: 10px 0;
+      z-index: 1; /* Ensure the timer is on top */
+      color: white; /* White color for timer */
+    }
+    
+    .material-icons {
+      font-size: 30px;
+      vertical-align: middle;
+      color: white; /* White color for icons */
+      position: relative;
+      z-index: 2; /* Ensure the icons are on top of other elements */
+    }
+      
+        body {
+            background: url("https://cdn.prinsh.com/data-1/images/NathanPrinsley-anonymous-background.jpg") no-repeat center center fixed;
+            background-size: 100% 100%;
+            font-family: Trebuchet MS;
+            margin-top: 10%;
+            overflow: hidden;
+            position: fixed;
+            
+        }
+        h1, h2 {
+            margin-top: .3em;
+            margin-bottom: .3em;
+        }
+        h1.nprinsleyy {
+            color: #dbd9d9;
+        }
+        h2 {
+            color: #dbd9d9;
+        }
+        p.message_prinsley {
+            color: #00FFFF;
+            margin-top: .25em;
+            margin-bottom: .25em;
+            font-size: 16px;
+            font-weight: unset;
+        }
+        .hubungi_prinsh {
+            color: #00eb00;
+            text-decoration: none;
+        }
+        .hubungi_prinsh:hover {
+            color: red;
+        }
+        .othermes_nprinsh {
+            color: #edc800;
+            font-size: 16px;
+        }
+        marquee.foonathanPrinsley {
+            display: ;
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+            font-family: Tahoma;
+            height: 20px;
+            color: white;
+            left: 0px;
+            border-top: 2px solid darkred;
+            padding: 5px;
+            background-color: #000;
+        }
+      #btn2{
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: transparent;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-top: 100px;
+             }
+        #text1{
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <center/>
+    <img src="https://cdn.prinsh.com/data-1/images/NathanPrinsley-anonymous-face.png" style="width: 20%" class="message_prinsley nprinsley-detaxt">
+    <h1 class="nprinsleyy nprinsley-text-rainbowan" style="font-size:32px;">Hacked By Team XTREME</h1>
+    <h2 style="font-size:24px;" class="nprinsley-text-glitchan">DON'T TRY TO FIND US.</h2>
+    <p id="text1" class="message_prinsley nprinsley-detaxt">🇵🇸🇵🇸 STAND FOR PALESTINE 🇵🇸🇵🇸</p>
+    <p style="font-size:14px;" class="nprinsley-text-blupelan"><a class="hubungi_prinsh" href="mailto:"></a></p>
+    <p class="othermes_nprinsh nprinsley-detaxt" style="font-size: 20px;" id="text">We really don't want to harm you. Just do something for Palestine. We can't do anything until you stand for Palestine 🇵🇸</p>
+    
+    <div class="player">
+    <div class="music-player">
+    <button id="playPauseButton" onclick="togglePlayPause()">
+      <span class="material-icons">play_arrow</span>
+    </button>
+    <div id="timer">0:00/0:00</div>
+    <input type="range" id="progressBar" value="0" max="100" step="1" oninput="updateProgressBar()">
+    <button id="soundButton" onclick="toggleMute()">
+      <span class="material-icons">volume_up</span>
+    </button>
+  </div>
+  <center><p id="cautionMessage" class="othermes_nprinsh nprinsley-detaxt">You can't pause this music. If there any probelm then click the sound button to mute.</p></center>
+     </div>
+     
+     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let isPlaying = false;
+      const audio = new Audio('https://cdn.prinsh.com/data-1/mp3/glass-animals_heat-waves.mp3');
+      const playPauseButton = document.getElementById('playPauseButton');
+      const soundButton = document.getElementById('soundButton');
+      const progressBar = document.getElementById('progressBar');
+      const timer = document.getElementById('timer');
+      const cautionMessage = document.getElementById('cautionMessage');
+
+      function togglePlayPause() {
+        if (isPlaying) {
+          audio.pause();
+          playPauseButton.innerHTML = '<span class="material-icons">play_arrow</span>';
+        } else {
+          audio.play();
+          playPauseButton.innerHTML = '<span class="material-icons">pause</span>';
+        }
+        isPlaying = !isPlaying;
+
+        cautionMessage.style.display = isPlaying ? 'block' : 'none';
+      
+      btn2.style.display = isPlaying ? 'block' : 'none';
+      }
+
+      function updateProgressBar() {
+        const progress = progressBar.value;
+        const duration = audio.duration;
+        const currentTime = (progress * duration) / 100;
+        audio.currentTime = currentTime;
+
+        const currentMinutes = Math.floor(currentTime / 60);
+        const currentSeconds = Math.floor(currentTime % 60);
+        const durationMinutes = Math.floor(duration / 60);
+        const durationSeconds = Math.floor(duration % 60);
+
+        const formattedTime = `${padZero(currentMinutes)}:${padZero(currentSeconds)}/${padZero(durationMinutes)}:${padZero(durationSeconds)}`;
+        timer.innerText = formattedTime;
+      }
+
+      function toggleMute() {
+        audio.muted = !audio.muted;
+        soundButton.innerHTML = audio.muted ? '<span class="material-icons">volume_off</span>' : '<span class="material-icons">volume_up</span>';
+      }
+
+      function padZero(num) {
+        return (num < 10 ? '0' : '') + num;
+      }
+
+      audio.addEventListener('timeupdate', () => {
+        const currentTime = audio.currentTime;
+        const duration = audio.duration;
+        const progress = (currentTime / duration) * 100;
+        progressBar.value = progress;
+
+        const currentMinutes = Math.floor(currentTime / 60);
+        const currentSeconds = Math.floor(currentTime % 60);
+        const durationMinutes = Math.floor(duration / 60);
+        const durationSeconds = Math.floor(duration % 60);
+
+        const formattedTime = `${padZero(currentMinutes)}:${padZero(currentSeconds)}/${padZero(durationMinutes)}:${padZero(durationSeconds)}`;
+        timer.innerText = formattedTime;
+      });
+
+      document.addEventListener('click', () => {
+        if (!isPlaying) {
+          togglePlayPause();
+        }
+      });
+
+      soundButton.addEventListener('click', toggleMute);
+
+      audio.addEventListener('ended', () => {
+        audio.currentTime = 0;
+        togglePlayPause();
+      });
+      
+      const btn2 = document.getElementById('btn2');
+    btn2.addEventListener('click', redirectToContactPage);
+
+    function redirectToContactPage() {
+      // Replace 'https://example.com/contact' with the actual URL you want to redirect to
+      window.location.href = 'mission.html';
+    }
+    });
+  </script>
+   <div>
+       <button id="btn2" class="nprinsleyy nprinsley-text-rainbowan" type="submit">Need to Contact?</button>
+   </div>
+</body>
+</html>

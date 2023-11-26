@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Game! Hacked by Team Xtreme</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.prinsh.com/data-1/images/NathanPrinsley-anonymous-face.png" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.prinsh.com/NathanPrinsley-textstyle/nprinsh-stext.css"/>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: url('https://cdn.prinsh.com/data-1/images/NathanPrinsley-anonymous-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #fff;
+    }
+
+    p {
+      color: #eee;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #questions-container,
+    #responses-container,
+    #lockout-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #responses-container,
+    #lockout-container {
+      display: none;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #question-text{
+      color: #250eea;
+    }
+    #error-message {
+      color: red;
+      margin-top: 10px;
+    }
+    #trial-message {
+      color: orange;
+      margin-top: 10px;
+    }
+    #lockout-timer {
+      color: red;
+      margin-top: 10px;
+    }
+    #team {
+      padding-top: 120px;
+      font-family:  'Brush Script MT', cursive;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="nprinsleyy nprinsley-text-rainbowan" style="font-size:32px;" >Welcome to the Mission Game!</h1>
+  <p class="nprinsley-text-glitchan">Complete the mission to reveal the contact button.</p>
+
+  <div id="questions-container">
+    <!-- Questions will be dynamically added here -->
+    <p id="question-text" class="message_prinsley nprinsley-detaxt"></p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+    <button onclick="checkAnswer()">Submit Answer</button>
+    <p id="error-message"></p>
+    <p id="trial-message"></p>
+  </div>
+
+  <div id="responses-container">
+    <!-- Responses will be dynamically added here -->
+    <button onclick="redirectToEmail()">Mission Complete! Contact Us</button>
+  </div>
+
+  <div id="lockout-container">
+    <p id="lockout-timer"></p>
+  </div>
+
+  <script>
+    let playerName = prompt("Enter your name:");
+    alert(`Welcome, ${playerName}! Your mission is to answer the following questions.`);
+
+    const questions = [
+      { question: "I am a 3-letter word that opens doors. What am I?", answer: "key " },
+      { question: "Will you stand for Palestine?", answer: "yes " },
+      { question: "The more you take, the more you leave behind. What am I?", answer: "footsteps " }
+      // Add more questions as needed
+    ];
+
+    let currentQuestionIndex = 0;
+    let incorrectAttempts = 0;
+    const maxIncorrectAttempts = 3;
+    const lockoutTime = 3 * 60 * 1000; // 3 minutes in milliseconds
+    let lockoutEndTime = localStorage.getItem("lockoutEndTime") || 0;
+    let lockoutTimerInterval;
+
+    function displayQuestion() {
+      const questionText = document.getElementById("question-text");
+      questionText.textContent = questions[currentQuestionIndex].question;
+      document.getElementById("answer-input").value = ""; // Clear the answer field
+      document.getElementById("error-message").textContent = ""; // Clear the error message
+      document.getElementById("trial-message").textContent = ""; // Clear the trial message
+      document.getElementById("lockout-container").style.display = "none"; // Hide lockout container
+      document.getElementById("responses-container").style.display = "none"; // Hide responses container
+    }
+
+    function displayResponse(response) {
+      const responsesContainer = document.getElementById("responses-container");
+      responsesContainer.innerHTML += `<p>${response}</p>`;
+    }
+
+    function displayError(message) {
+      document.getElementById("error-message").textContent = message;
+    }
+
+    function displayTrialMessage(message) {
+      document.getElementById("trial-message").textContent = message;
+    }
+
+    function displayLockoutTimer(timeRemaining) {
+      document.getElementById("lockout-timer").textContent = `Remaining lockout time: ${Math.ceil(timeRemaining / 1000)} seconds`;
+    }
+
+    function checkAnswer() {
+      if (Date.now() < lockoutEndTime) {
+        displayTrialMessage(`You are locked out. Try again after ${(lockoutEndTime - Date.now()) / 1000} seconds.`);
+        return;
+      }
+
+      const userAnswer = document.getElementById("answer-input").value.toLowerCase();
+      const correctAnswer = questions[currentQuestionIndex].answer.toLowerCase();
+
+      if (userAnswer === correctAnswer || userAnswer === correctAnswer.replace(/\s/g, "")) {
+        displayResponse("Correct! Well done.");
+        showNextQuestion();
+      } else {
+        incorrectAttempts++;
+
+        if (incorrectAttempts >= maxIncorrectAttempts) {
+          lockoutUser();
+        } else {
+          displayError("Incorrect answer. Try again.");
+          displayTrialMessage(`Remaining trials: ${maxIncorrectAttempts - incorrectAttempts}`);
+        }
+      }
+    }
+
+    function showNextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+      } else {
+        document.getElementById("questions-container").style.display = "none";
+        document.getElementById("responses-container").style.display = "block";
+      }
+    }
+
+    function redirectToEmail() {
+      let email = "indo.hacker@proton.me";
+      window.location.href = `mailto:${email}`;
+    }
+
+    function lockoutUser() {
+      incorrectAttempts = 0;
+      lockoutEndTime = Date.now() + lockoutTime;
+      localStorage.setItem("lockoutEndTime", lockoutEndTime);
+
+      displayLockoutTimer(lockoutTime);
+
+      document.getElementById("questions-container").style.display = "none";
+      document.getElementById("lockout-container").style.display = "block";
+
+      lockoutTimerInterval = setInterval(() => {
+        const timeRemaining = lockoutEndTime - Date.now();
+
+        if (timeRemaining > 0) {
+          displayLockoutTimer(timeRemaining);
+        } else {
+          clearInterval(lockoutTimerInterval);
+          document.getElementById("lockout-container").style.display = "none";
+          displayQuestion();
+        }
+      }, 1000);
+    }
+
+    displayQuestion();
+  </script>
+
+  <div id="team">
+    <h1 class="nprinsleyy nprinsley-text-rainbowan"><b>TEAM XTREME</b></h1>
+  </div>
+</body>
+</html>
